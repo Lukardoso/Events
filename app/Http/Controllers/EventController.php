@@ -35,7 +35,6 @@ class EventController extends Controller
         {
             $username = $this->formatUsernameToPath();
             $picturePath = $request->file('event_picture')->store($username, 'public');      
-                  
         } else {
             $picturePath = "storage/default_picture.png";
         }
@@ -48,7 +47,7 @@ class EventController extends Controller
             'open_event' => 'in:on,off',
             'description' => 'string|max:255',
         ]);
-
+        
         $validated = $validated += ['event_picture' => $picturePath];
 
         return $validated;
