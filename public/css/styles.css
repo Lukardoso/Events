@@ -36,6 +36,10 @@ body {
   font-family: 'Comfortaa', sans-serif;
 }
 
+main {
+  min-height: 100vh;
+}
+
 header {
   display: flex;
   flex-wrap: wrap;

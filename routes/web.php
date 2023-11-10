@@ -16,8 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
-});
+    return view('welcome');
+})->name('welcome');
+
+Route::get('dashboard', function () {
+    return view('dashboard');
+})->name('dashboard')->middleware(['auth', 'verified']);
 
 Route::resource('events', EventController::class)
     ->only(['index', 'create', 'store', 'update', 'destroy'])->middleware(['auth', 'verified']);
