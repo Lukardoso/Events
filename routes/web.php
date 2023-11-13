@@ -24,7 +24,7 @@ Route::get('dashboard', function () {
 })->name('dashboard')->middleware(['auth', 'verified']);
 
 Route::resource('events', EventController::class)
-    ->only(['index', 'create', 'store', 'update', 'destroy'])->middleware(['auth', 'verified']);
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy'])->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

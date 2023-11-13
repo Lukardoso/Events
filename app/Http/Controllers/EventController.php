@@ -5,22 +5,27 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use App\Models\Event;
+
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        //
+        $events = Event::where('user_id', Auth::user()->id);
+
+        return view('index', [
+            'events' => $events,
+        ]);
     }
 
-
-    public function create()
+    public function create(): View
     {
         return view('events.create');
     }
 
-
-    public function store(Request $request)
+    public function store(Request $request): View
     {        
         
         $validated = $this->validateInputs($request);
@@ -61,7 +66,6 @@ class EventController extends Controller
         
         return $formatedUsername;
     }
-
     
     /**
      * Show the form for editing the specified resource.

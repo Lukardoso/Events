@@ -4,23 +4,27 @@ namespace Tests\Feature;
 
 use App\Models\Event;
 use App\Models\User;
+use App\Http\Controllers\EventController;
 use Tests\TestCase;
 
 class EventControllerTest extends TestCase
 {
     protected User $user;
 
-    private function createNewUser()
-    {
-        $this->user = User::factory()->create();
-    }
 
     private function authenticate()
     {
+        $this->createNewUser();
+
         $this->post('/login', [
             'email' => $this->user->email,
             'password' => 'password',
         ]);
+    }
+
+    private function createNewUser()
+    {
+        $this->user = User::factory()->create();
     }
 
     public function test_non_authenticated_user_should_be_redirect_to_login(): void
@@ -32,11 +36,11 @@ class EventControllerTest extends TestCase
 
     public function test_authenticated_user_should_be_able_to_create_event(): void
     {
-        $this->createNewUser();
         $this->authenticate();
 
-        $post = $this->post('/events', [
+        $post = $this->post(route('events.store'), [
             'event_name' => 'The Event',
+            'user_id' => $this->user->id,
             'type' => 'The type',
             'date' => '11/11/2030',
             'local' => 'The place',
@@ -48,9 +52,8 @@ class EventControllerTest extends TestCase
         $post->assertStatus(200);
     }
 
-    public function test_user_should_not_be_able_the_post_unvalidated_data()
+    public function test_user_should_not_be_able_to_post_unvalidated_data(): void
     {
-        $this->createNewUser();
         $this->authenticate();
 
         $post = $this->post('/events', [
@@ -66,9 +69,18 @@ class EventControllerTest extends TestCase
         $post->assertStatus(302);
     }
 
-    public function test_default_picture_exists()
+    public function test_default_picture_exists(): void
     {
         $file = 'public/storage/default_picture.png';
         $this->assertFileExists($file);
     }
+
+    public function test_events_can_be_rendered()
+    {
+        $this->authenticate();
+
+        $indexRoute = $this->get(route('events.index'));        
+        $indexRoute->assertStatus(200);
+    }
+
 }
