@@ -43,5 +43,11 @@ jobs:
       - name: Generate app key
         run: php artisan key:generate
 
+      - name: Setup Test Directory
+        run: mkdir tests/Unit
+
+      - name: Create sqllite database
+        run: touch database/database.sqlite
+
       - name: Execute tests
         run: vendor/bin/phpunit
