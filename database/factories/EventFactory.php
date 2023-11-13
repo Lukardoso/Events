@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'local' => 'Fake Place',
             'open_event' => 'on',
             'description' => 'Fake Description',
-            'event_picture' => 'public/storage/default_picture.png',
+            'event_picture' => 'shared_images/default_picture.png',
         ];
     }
 
@@ -35,7 +35,7 @@ class EventFactory extends Factory
         $randomUser = random_int(1, $userLenght);
 
         if(!User::where('id', $randomUser)) {
-            getRandomUser();
+            $this->getRandomUser();
         }
 
         return $randomUser;
