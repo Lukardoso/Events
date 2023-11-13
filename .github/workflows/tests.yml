@@ -35,7 +35,7 @@ jobs:
           coverage: none
 
       - name: Install Composer dependencies
-        run: composer install --prefer-dist --no-interaction --no-progress
+        run: composer update
 
       - name: Install Node dependencies
         run: npm install
