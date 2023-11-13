@@ -7,13 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Models\Event;
-
+use Illuminate\Http\RedirectResponse;
 
 class EventController extends Controller
 {
     public function index(): View
     {
-        $events = Event::where('user_id', Auth::user()->id);
+        $events = Event::where('user_id', Auth::user()->id)->get();
 
         return view('index', [
             'events' => $events,
@@ -25,13 +25,13 @@ class EventController extends Controller
         return view('events.create');
     }
 
-    public function store(Request $request): View
+    public function store(Request $request): RedirectResponse
     {        
         
         $validated = $this->validateInputs($request);
         $request->user()->events()->create($validated);
 
-        return view('events.create');
+        return redirect(route('events.index'));
     }
 
     private function validateInputs(Request $request): array
@@ -41,7 +41,7 @@ class EventController extends Controller
             $username = $this->formatUsernameToPath();
             $picturePath = $request->file('event_picture')->store($username, 'public');      
         } else {
-            $picturePath = "storage/default_picture.png";
+            $picturePath = "shared_images/default_picture.png";
         }
         
         $validated = $request->validate([

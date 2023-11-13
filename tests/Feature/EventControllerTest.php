@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Event;
 use App\Models\User;
-use App\Http\Controllers\EventController;
 use Tests\TestCase;
 
 class EventControllerTest extends TestCase
@@ -38,9 +37,8 @@ class EventControllerTest extends TestCase
     {
         $this->authenticate();
 
-        $post = $this->post(route('events.store'), [
+        $this->post(route('events.store'), [
             'event_name' => 'The Event',
-            'user_id' => $this->user->id,
             'type' => 'The type',
             'date' => '11/11/2030',
             'local' => 'The place',
@@ -48,8 +46,11 @@ class EventControllerTest extends TestCase
             'description' => 'The description',
         ]);
 
-        $this->assertAuthenticated();
-        $post->assertStatus(200);
+        $postedEvent = Event::where('user_id', $this->user->id)
+            ->first()
+            ->user_id;
+        
+        $this->assertEquals($this->user->id, $postedEvent);
     }
 
     public function test_user_should_not_be_able_to_post_unvalidated_data(): void
@@ -71,7 +72,7 @@ class EventControllerTest extends TestCase
 
     public function test_default_picture_exists(): void
     {
-        $file = 'public/storage/default_picture.png';
+        $file = 'public/storage/shared_images/default_picture.png';
         $this->assertFileExists($file);
     }
 
@@ -81,6 +82,30 @@ class EventControllerTest extends TestCase
 
         $indexRoute = $this->get(route('events.index'));        
         $indexRoute->assertStatus(200);
+    }
+
+    public function test_redered_events_should_show_relevant_data()
+    {
+        $this->authenticate();
+
+        $this->post(route('events.store'), [
+            'event_name' => 'An Unique Event',
+            'user_id' => $this->user->id,
+            'type' => 'An Unique Type',
+            'date' => '11/11/2100',
+            'local' => 'An Unique Place',
+            'open_event' => 'on',
+            'description' => 'An Unique Description',
+        ]);
+
+        $response = $this->get(route('events.index'));
+
+        $response->assertSeeText([
+            'An Unique Event',
+            'An Unique Place',
+            '11/11/2100',
+            'An Unique Description',
+        ]);
     }
 
 }
