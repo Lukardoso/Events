@@ -38,10 +38,10 @@ class EventController extends Controller
     {
         if($request->file('event_picture'))
         {
-            $username = $this->formatUsernameToPath();
-            $picturePath = $request->file('event_picture')->store($username, 'public');      
+            $picturePath = $this->userPicturePath();
+            $picturePath = $request->file('event_picture')->store($picturePath, 'public');      
         } else {
-            $picturePath = "shared_images/default_picture.png";
+            $picturePath = "images/default_picture.png";
         }
         
         $validated = $request->validate([
@@ -58,13 +58,14 @@ class EventController extends Controller
         return $validated;
     }
 
-    private function formatUsernameToPath(): string
+    private function userPicturePath(): string
     {
         $username = strtolower(Auth::user()->name);
 
-        $formatedUsername = str_replace(' ', '', $username);
+        $picturePath = str_replace(' ', '', $username);
+
         
-        return $formatedUsername;
+        return $picturePath;
     }
     
     /**

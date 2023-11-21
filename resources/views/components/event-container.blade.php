@@ -1,11 +1,7 @@
-<div>
-    <img src="storage/{{ $event->event_picture }}" alt="Imagem do Evento" style="
-        object-fit: cover;
-    ">
+<div class="event-container">
+    <img src="{{ $event->event_picture }}" alt="Imagem do Evento">
 
-    <div style="
-        flex: 1;
-    ">
+    <div>
         <h2>{{ $event->event_name }}</h2>
         <p>Data: {{ $event->date }}</p>
         <p>Local: {{ $event->local }}</p>

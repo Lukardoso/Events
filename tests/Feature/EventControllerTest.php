@@ -72,7 +72,7 @@ class EventControllerTest extends TestCase
 
     public function test_default_picture_exists(): void
     {
-        $file = 'public/storage/shared_images/default_picture.png';
+        $file = 'public/images/default_picture.png';
         $this->assertFileExists($file);
     }
 
