@@ -25,7 +25,7 @@ class EventFactory extends Factory
             'local' => 'Fake Place',
             'open_event' => 'on',
             'description' => 'Fake Description',
-            'event_picture' => 'shared_images/default_picture.png',
+            'event_picture' => 'images/default_picture.png',
         ];
     }
 
