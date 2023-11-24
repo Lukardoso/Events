@@ -1,5 +1,7 @@
 <x-layout.main>    
-    <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data">
+    <link rel="stylesheet" href="/css/forms.css">
+
+    <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data" class="vertical-form">
         @csrf
 
         <div>
@@ -9,7 +11,7 @@
         </div>
 
         <div>
-        <p>Ok, agora qual seria o tipo deste evento? Ex.: aniversário, casamento, reunião, congresso...</p>
+            <p>Ok, agora qual seria o tipo deste evento? Ex.: aniversário, casamento, reunião, congresso...</p>
             <label for="type">Tipo:</label>
             <input type="text" name="type" required value="{{ old('type') }}">
         </div>
@@ -18,14 +20,18 @@
             <p>Quando e onde acontecerá?</p>
             <label for="date">Data:</label>
             <input type="date" name="date" required value="{{ old('date') }}">
+            <label for="time">Hora:</label>
+            <input type="time" name="time" required value="{{ old('time') }}">
             <label for="local">Local:</label>
             <input type="text" name="local" required value="{{ old('local') }}">
         </div>
 
         <div>
             <p>Por padrão seu evento será criado fechado ao público, mas se quizer torná-lo disponível a todos, basta selecionar a seguir.</p>
-            <label for="open_event">Evento Aberto:</label>
-            <input type="checkbox" name="open_event">
+            <div id="open_event">
+                <label for="open_event">Evento Aberto:</label>
+                <input type="checkbox" name="open_event">
+            </div>
         </div>
 
         <div>
@@ -40,7 +46,8 @@
             <input type="file" name="event_picture" value="{{ old('event_picture') }}">
         </div>
         
-        <button>Salvar</button>
+        <button type="submit">Salvar</button>
+
 
     </form>
 </x-layout.main>

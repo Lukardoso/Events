@@ -22,6 +22,7 @@ class EventFactory extends Factory
             'user_id' => $this->getRandomUser(),
             'type' => 'Fake Type',
             'date' => '11/11/3000',
+            'time' => '20:00',
             'local' => 'Fake Place',
             'open_event' => 'on',
             'description' => 'Fake Description',
