@@ -33,6 +33,8 @@ jobs:
         mkdir -p database
         touch database/database.sqlite
         mkdir tests/Unit
+    - name: Create a fresh migrate
+      run: php artisan migrate:fresh
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
