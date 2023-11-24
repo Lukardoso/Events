@@ -1,7 +1,5 @@
 <x-layout.main>
-    <div class="full-center" style="
-        place-items: center;
-    ">
+    <div style="place-self: center;">
         <h1>Welcome!</h1>
         <p>This is a temporary page.</p>
         <div style="flex-direction: row;">

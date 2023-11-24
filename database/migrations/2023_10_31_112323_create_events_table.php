@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('event_name');
             $table->string('type');
             $table->string('date');
+            $table->string('time');
             $table->string('local');
             $table->string('open_event')->default('off');
             $table->string('description')->nullable();

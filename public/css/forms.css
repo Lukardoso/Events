@@ -1,0 +1,31 @@
+.vertical-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+#new-event-form {
+    max-width: 60%;
+}
+#new-event-form > * {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
+}
+#new-event-form p {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+#new-event-form input {
+    text-align: center;
+}
+
+#open_event {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}

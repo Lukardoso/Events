@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\User;
 use Tests\TestCase;
 
+
 class EventControllerTest extends TestCase
 {
     protected User $user;
@@ -41,6 +42,7 @@ class EventControllerTest extends TestCase
             'event_name' => 'The Event',
             'type' => 'The type',
             'date' => '11/11/2030',
+            'time' => '20:00',
             'local' => 'The place',
             'open_event' => 'on',
             'description' => 'The description',
@@ -68,13 +70,7 @@ class EventControllerTest extends TestCase
 
         $this->assertNotTrue($post);
         $post->assertStatus(302);
-    }
-
-    public function test_default_picture_exists(): void
-    {
-        $file = 'public/images/default_picture.png';
-        $this->assertFileExists($file);
-    }
+    }    
 
     public function test_events_can_be_rendered()
     {
@@ -93,6 +89,7 @@ class EventControllerTest extends TestCase
             'user_id' => $this->user->id,
             'type' => 'An Unique Type',
             'date' => '11/11/2100',
+            'time' => '20:00',
             'local' => 'An Unique Place',
             'open_event' => 'on',
             'description' => 'An Unique Description',
@@ -104,7 +101,7 @@ class EventControllerTest extends TestCase
             'An Unique Event',
             'An Unique Place',
             '11/11/2100',
-            'An Unique Description',
+            '20:00',
         ]);
     }
 

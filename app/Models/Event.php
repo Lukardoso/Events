@@ -14,6 +14,7 @@ class Event extends Model
         'event_name',
         'type',
         'date',
+        'time',
         'local',
         'open_event',
         'description',
