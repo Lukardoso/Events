@@ -32,7 +32,10 @@ class EventFactory extends Factory
 
     private function getRandomUser()
     {
+        User::factory()->create();
+
         $userLenght = User::all()->count();
+
         $randomUser = random_int(1, $userLenght);
 
         if(!User::where('id', $randomUser)) {
@@ -41,4 +44,5 @@ class EventFactory extends Factory
 
         return $randomUser;
     }
+
 }
