@@ -21,6 +21,6 @@
 
 <script>
     function openEvent(id) {
-        window.open(`/events/${id}`);
+        window.open(`/events/${id}`, '_self');
     }
 </script>

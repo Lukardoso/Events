@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Events' }}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/popups.js" defer></script>
     
 </head>
 <body>
@@ -45,33 +46,13 @@
                             >Logout</p>
                         </form>
                     </div>
-
-                    <script>
-                        let profile = document.querySelector('#profile');
-                        let profilePopup = document.querySelector('#profile-popup');
-                        profile.addEventListener('click', () => {                            
-                            if(profilePopup.style.display === 'grid') {
-                                profilePopup.style.display = 'none';
-                            } else {
-                                profilePopup.style.display = 'grid';                            
-                                window.addEventListener('click', nextClick);
-                            }
-                        });
-
-                        var nextClick = function(e) {
-                            if(!profile.contains(e.target)) {
-                                profilePopup.style.display = 'none';
-                                window.removeEventListener('click', nextClick);
-                            }
-                        }
-                    </script>
-
                 </div>
             @endauth
 
             @guest
                 <div id="profile">
-                    <a href="{{ route('login') }}">Login</a>
+                    <a href="{{ route('login') }}">Login</a>                    
+                    <a href="{{ route('register') }}">Register</a>                    
                 </div>
             @endguest
             

@@ -1,5 +1,7 @@
 <x-layout.main>    
-    <link rel="stylesheet" href="/css/forms.css">
+    <header>
+        <link rel="stylesheet" href="/css/forms.css">
+    </header>
 
     <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data" class="vertical-form">
         @csrf

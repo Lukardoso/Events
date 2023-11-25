@@ -19,9 +19,21 @@ class EventController extends Controller
     {
         $events = Event::where('user_id', Auth::user()->id)->get();
 
-        return view('index', [
+        return view('events.index', [
             'events' => $events,
             'user' => Auth::user()->name,
+        ]);
+    }
+
+    /**
+     * Display a single event details
+     */
+    public function eventDetails(string $id): View
+    {
+        $event = Event::where('id', $id)->first();
+
+        return view('events.details', [
+            'event' => $event,
         ]);
     }
 
@@ -54,7 +66,7 @@ class EventController extends Controller
             $picturePath = $this->setUserPicturePath();
             $picturePath = $request->file('event_picture')->store($picturePath, 'public');      
         } else {
-            $picturePath = "images/default_picture.png";
+            $picturePath = "default_picture.png";
         }
         
         $validated = $request->validate([
