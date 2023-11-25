@@ -7,16 +7,16 @@
   --main-bg-clr: #fff;
   --sec-bg-clr: #f1f1f1;
   
-  --accent-clr: ;
+  --accent-clr: tomato;
   
-  --light-clr: #ffff;
-  --dark-clr: #2e2b2b;
+  --main-font-clr: #2e2b2b;
+  --sec-font-clr: #ffff;
 }
   
 @media (prefers-color-scheme: dark) {
   * {
-    background: var(--dark-clr);
-    color: var(--light-clr);
+    background: #2e2b2b;
+    color: #ffff;
   }  
 }
 
@@ -46,7 +46,7 @@ main {
 }
 
 img {
-  max-width: 300px;
+  width: 100%;
   max-height: 200px;
   display: block;
   object-fit: cover;
@@ -123,6 +123,7 @@ footer {
   flex-wrap: wrap;
   gap: 0.5rem;
   cursor: pointer;
+  user-select: none;
 }
 
 #profile-popup {
@@ -194,9 +195,10 @@ footer {
   opacity: 0.7;
 }
 .event-container > img {  
-  flex-basis: 300px;
+  max-width: 300px;
   border-radius: 0.5rem;
 }
+
 #event-description {
   display: flex;
   flex-direction: column;
@@ -220,6 +222,9 @@ footer {
 
   .event-container {
     width: 100%;
+  }
+  .event-container > img {  
+    max-width: revert;
   }
 
 }

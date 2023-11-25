@@ -36,10 +36,18 @@ jobs:
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
+<<<<<<< HEAD
+      run: vendor/bin/phpunit test/Feature
+=======
       run: vendor/bin/phpunit tests/Feature
+>>>>>>> 755e4d8b00e0011b737161b99285de586fc9f6f3
     - name: Execute Unit tests via PHPUnit
       env:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
+<<<<<<< HEAD
+      run: vendor/bin/phpunit test/Unit
+=======
       run: vendor/bin/phpunit tests/Unit
 
+>>>>>>> 755e4d8b00e0011b737161b99285de586fc9f6f3

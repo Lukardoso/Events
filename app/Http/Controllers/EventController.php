@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use App\Models\Event;
 use Illuminate\Http\RedirectResponse;
-
+use App\Models\Event;
 
 class EventController extends Controller
 {
@@ -19,9 +19,21 @@ class EventController extends Controller
     {
         $events = Event::where('user_id', Auth::user()->id)->get();
 
-        return view('index', [
+        return view('events.index', [
             'events' => $events,
             'user' => Auth::user()->name,
+        ]);
+    }
+
+    /**
+     * Display a single event details
+     */
+    public function eventDetails(string $id): View
+    {
+        $event = Event::where('id', $id)->first();
+
+        return view('events.details', [
+            'event' => $event,
         ]);
     }
 
@@ -36,7 +48,7 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request): RedirectResponse
+    public function store(EventRequest $request): RedirectResponse
     {                
         $validated = $this->validateInputs($request);
         $request->user()->events()->create($validated);
@@ -44,28 +56,23 @@ class EventController extends Controller
         return redirect(route('events.index'));
     }
 
+
+    // I NEED TO REFACTOR THIS IN SOME WAY ----------------------------------------------------------
+
     /**
      * Validade request inputs from user.
      */
-    private function validateInputs(Request $request): array
+    private function validateInputs(EventRequest $request): array
     {
         if($request->file('event_picture'))
         {
             $picturePath = $this->setUserPicturePath();
             $picturePath = $request->file('event_picture')->store($picturePath, 'public');      
         } else {
-            $picturePath = "images/default_picture.png";
+            $picturePath = "default_picture.png";
         }
         
-        $validated = $request->validate([
-            'event_name' => 'string|required',
-            'type' => 'string|required',
-            'date' => 'date|required|after_or_equal:today',
-            'time' => 'date_format:H:i|required',
-            'local' => 'string|required',
-            'open_event' => 'in:on,off',
-            'description' => 'string|max:255',
-        ]);
+        $validated = $request->validated();
         
         $validated = $validated += ['event_picture' => $picturePath];
 
@@ -83,7 +90,9 @@ class EventController extends Controller
         
         return $picturePath;
     }
-    
+
+    // ---------------------------------------------------------------------------------------------
+
 
     /**
      * Show the form for editing the specified resource.
