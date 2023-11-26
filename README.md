@@ -11,6 +11,6 @@ A simple web application to create, invite and manage Events. By the end of this
 - Share post events pictures
 
 ## You Should Know...
-- The main objetive of this project is to pratice Laravel Frammework.
+- The main goal of this project is to practice Laravel Frammework.
 - This is a work in progress, so it may change while I learn something new.
 - While the final stage must provide a fullstack experience, I'm mainly focused on the BackEnd.
