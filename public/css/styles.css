@@ -129,14 +129,15 @@ footer {
 #profile-popup {
   position: absolute;
   bottom: -5rem;
-  left: -3rem;
+  left: -100px;
 
   display: none;
-  width: 100%;
+  min-width: 150px;
   
   border: 0.1rem solid rgb(0, 0, 0, 0.1);
   border-radius: 0.5rem;
   box-shadow: .2rem .2rem .2rem rgb(0, 0, 0, 0.2);
+
 }
 #profile-popup > * {
   padding: 0.5rem;

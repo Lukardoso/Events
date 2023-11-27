@@ -50,49 +50,12 @@ class EventController extends Controller
      */
     public function store(EventRequest $request): RedirectResponse
     {                
-        $validated = $this->validateInputs($request);
+        $validated = $request->validated();
+        $validated['event_picture'] = $request->storePicture();
         $request->user()->events()->create($validated);
 
         return redirect(route('events.index'));
     }
-
-
-    // I NEED TO REFACTOR THIS IN SOME WAY ----------------------------------------------------------
-
-    /**
-     * Validade request inputs from user.
-     */
-    private function validateInputs(EventRequest $request): array
-    {
-        if($request->file('event_picture'))
-        {
-            $picturePath = $this->setUserPicturePath();
-            $picturePath = $request->file('event_picture')->store($picturePath, 'public');      
-        } else {
-            $picturePath = "default_picture.png";
-        }
-        
-        $validated = $request->validated();
-        
-        $validated = $validated += ['event_picture' => $picturePath];
-
-        return $validated;
-    }
-
-    /**
-     * Create a path to the event image with the username.
-     */
-    private function setUserPicturePath(): string
-    {
-        $username = strtolower(Auth::user()->name);
-
-        $picturePath = str_replace(' ', '', $username);
-        
-        return $picturePath;
-    }
-
-    // ---------------------------------------------------------------------------------------------
-
 
     /**
      * Show the form for editing the specified resource.

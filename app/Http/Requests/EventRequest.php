@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Validator;
 
 class EventRequest extends FormRequest
 {
@@ -30,6 +31,35 @@ class EventRequest extends FormRequest
             'local' => 'string|required',
             'open_event' => 'in:on,off',
             'description' => 'string|max:255',
+            'event_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:4000,'
         ];
+    }
+
+    /**
+     * Store picture after validation.
+     */
+    public function storePicture(): string
+    {
+        if($this->file('event_picture'))
+        {
+            $picturePath = $this->setUserPicturePath();
+            $picturePath = $this->file('event_picture')->store($picturePath, 'public');      
+        } else {
+            $picturePath = "default_picture.png";
+        }        
+        
+        return $picturePath;
+    }
+
+    /**
+     * Create a path to the event picture with the username.
+     */
+    private function setUserPicturePath(): string
+    {
+        $username = strtolower(Auth::user()->name);
+
+        $picturePath = str_replace(' ', '', $username);
+        
+        return $picturePath;
     }
 }
