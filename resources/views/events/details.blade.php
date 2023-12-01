@@ -16,7 +16,7 @@
     <div id="event">
         <div>
             <div id="event-data">
-                <img src="/storage/{{ $event->event_picture }}"/>
+                <x-event-picture :eventPicture="$event->event_picture" />
                 
                 <p class="flex-container">
                     <span>Data: {{ $event->date }}</span>
@@ -29,7 +29,7 @@
                 </p>
                 <div id="side-bar">
                     <p>Total de Convidados: 99</p>
-                    <p>Presença confirmada: 57</p>      
+                    <p>Presença confirmada: 57</p>
                 </div>
             </div>
         </div>
@@ -44,12 +44,7 @@
                         <th>Email</th>
                         <th>Confirmado</th>
                     </tr>
-                    <tr>
-                        <td>Lucas Cardoso Lannes</td>
-                        <td>33999782780</td>
-                        <td>lucas@email.com</td>
-                        <td>sim</td>
-                    </tr>
+                    <x-invited />
                 </table>
             </div>
         </div>

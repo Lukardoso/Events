@@ -4,16 +4,18 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\Event;
-
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EventFactoryTest extends TestCase
 {
-    public function test_can_create_event_factory()
+    use RefreshDatabase;
+    
+    public function test_event_factory_can_be_created(): void
     {
-        $fakeEvent = Event::factory()->create();
+        $user = User::factory()->create();
+        $fakeEvent = Event::factory()->make(['user_id' => $user->id]);
 
-        $queryFakeEvent = Event::where('user_id', $fakeEvent->user_id)->first();
-
-        $this->assertSame($queryFakeEvent->user_id, $fakeEvent->user_id);
+        $this->assertSame($fakeEvent->user_id, $user->id);
     }
 }

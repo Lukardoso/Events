@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Event;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Tests\FakeAuthenticatedUser;
 use Tests\TestCase;
@@ -10,6 +11,7 @@ use Tests\TestCase;
 
 class EventControllerTest extends TestCase
 {
+    use RefreshDatabase;
     use FakeAuthenticatedUser;
 
     public function test_non_authenticated_user_should_be_redirect_to_login(): void

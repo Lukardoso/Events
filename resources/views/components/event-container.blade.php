@@ -1,9 +1,5 @@
 <div class="event-container" onclick="openEvent('{{ $event->id }}')">
-    @if(str_contains($event->event_picture, 'default_picture.png'))
-        <img src="{{ 'images/default_picture.png' }}" alt="Imagem do Evento">
-    @else
-        <img src="{{ 'storage/' . $event->event_picture }}" alt="Imagem do Evento">
-    @endif
+    <x-event-picture :eventPicture="$event->event_picture" />
 
     <div id="event-description">
         <h2>{{ $event->event_name }}</h2>
