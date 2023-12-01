@@ -3,14 +3,14 @@
 namespace Tests\Feature;
 
 use App\Models\Event;
-use App\Models\User;
+use Illuminate\Http\UploadedFile;
+use Tests\FakeAuthenticatedUser;
 use Tests\TestCase;
 
 
 class EventControllerTest extends TestCase
 {
-    protected User $user;
-
+    use FakeAuthenticatedUser;
 
     public function test_non_authenticated_user_should_be_redirect_to_login(): void
     {
@@ -48,6 +48,19 @@ class EventControllerTest extends TestCase
         $post->assertStatus(302);
     }    
 
+    public function test_invalid_picture_cant_be_posted()
+    {
+        $this->authenticate();
+
+        $file = UploadedFile::fake()->image('image.xyz');
+
+        $response = $this->post(route('events.store'), [
+            'event_picture' => $file,
+        ]);
+
+        $response->assertInvalid(['event_picture']);
+    }
+
     public function test_events_can_be_rendered()
     {
         $this->authenticate();
@@ -56,7 +69,7 @@ class EventControllerTest extends TestCase
         $indexRoute->assertStatus(200);
     }
 
-    public function test_redered_events_should_show_relevant_data()
+    public function test_should_load_event_data()
     {
         $this->authenticate();
         $this->createFakeEvent();
@@ -102,37 +115,5 @@ class EventControllerTest extends TestCase
     {
         $response = $this->get('/events/unknown-resource');
         $response->assertStatus(302);
-    }
-
-    
-    // Private Functions
-
-    private function authenticate(): void
-    {
-        $this->createFakeUser();
-
-        $this->post('/login', [
-            'email' => $this->user->email,
-            'password' => 'password',
-        ]);
-    }
-
-    private function createFakeUser(): void
-    {
-        $this->user = User::factory()->create();
-    }
-
-    private function createFakeEvent(): void
-    {        
-        $this->post(route('events.store'), [
-            'event_name' => 'An Unique Event',
-            'user_id' => $this->user->id,
-            'type' => 'An Unique Type',
-            'date' => '11/11/2100',
-            'time' => '20:00',
-            'local' => 'An Unique Place',
-            'open_event' => 'on',
-            'description' => 'An Unique Description',
-        ]);
     }
 }
