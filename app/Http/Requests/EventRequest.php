@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Validator;
 
 class EventRequest extends FormRequest
 {
@@ -30,7 +29,7 @@ class EventRequest extends FormRequest
             'time' => 'date_format:H:i|required',
             'local' => 'string|required',
             'open_event' => 'in:on,off',
-            'description' => 'string|max:255',
+            'description' => 'nullable|string|max:255',
             'event_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:4000,'
         ];
     }

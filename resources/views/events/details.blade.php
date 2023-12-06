@@ -3,9 +3,9 @@
         <link rel="stylesheet" href="/css/event-details.css">
     </header>
 
-    <h1 id="event-tittle">{{ $event->event_name }}</h1>
+    <h1 id="event-tittle" class="text-center margin-large">{{ $event->event_name }}</h1>
 
-    <div id="menu-bar">
+    <div id="menu-bar" class="flex-row space-evenly align-end padding-large soft-shadow">
         <a href="#">Editar Evento</a>
         <a href="#">Excluir Evento</a>
         <a href="#">Enviar Convite</a>

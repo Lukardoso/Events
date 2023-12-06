@@ -1,0 +1,41 @@
+label {
+    display: none;
+}
+
+#new-event-form {
+    margin-left: 200px;
+    max-width: 60%;
+}
+#new-event-form > * {
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid rgb(0, 0, 0, 0.2);
+}
+#new-event-form p {
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+#new-event-form input:not(input[type="checkbox"]) {
+    min-width: 30ch;
+    text-align: center;
+}
+
+#new-event-form textarea {
+    width: 100%;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+/* Mobile ------------------------------------------------------------------ */
+@media only screen and (max-width: 600px) {
+    #new-event-form {
+        margin-left: revert;
+        max-width: 100%;
+    }    
+  
+}

@@ -1,55 +1,70 @@
+<!-- TODO: Refatorar todos os inputs em components com error messages -->
+
 <x-layout.main>    
     <header>
-        <link rel="stylesheet" href="/css/forms.css">
+        <link rel="stylesheet" href="/css/new-event.css">
     </header>
 
-    <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data" class="vertical-form">
+    <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data"
+        class="flex-column gap-mid">
         @csrf
 
-        <div>
-            <p>Qual será o nome do seu evento?</p>
-            <label for="event_name">Nome do Evento:</label>
-            <input type="text" name="event_name" required value="{{ old('event_name') }}">
-        </div>
+        <x-event-input
+            message="Qual será o nome do seu evento?"
+            label="Nome do Evento"
+            name="event_name"
+        />
 
-        <div>
-            <p>Ok, agora qual seria o tipo deste evento? Ex.: aniversário, casamento, reunião, congresso...</p>
-            <label for="type">Tipo:</label>
-            <input type="text" name="type" required value="{{ old('type') }}">
-        </div>
+        <x-event-input
+            message="Ok, agora qual seria o tipo deste evento? Ex.: aniversário, casamento, reunião, congresso..."
+            label="Tipo"
+            name="type"
+        />
 
-        <div>
-            <p>Quando e onde acontecerá?</p>
-            <label for="date">Data:</label>
-            <input type="date" name="date" required value="{{ old('date') }}">
-            <label for="time">Hora:</label>
-            <input type="time" name="time" required value="{{ old('time') }}">
-            <label for="local">Local:</label>
-            <input type="text" name="local" required value="{{ old('local') }}">
-        </div>
+        <x-event-input
+            message="Quando e onde acontecerá?"
+            label="Data"
+            type="date"
+            name="date"
+        />
 
-        <div>
-            <p>Por padrão seu evento será criado fechado ao público, mas se quizer torná-lo disponível a todos, basta selecionar a seguir.</p>
-            <div id="open_event">
-                <label for="open_event">Evento Aberto:</label>
-                <input type="checkbox" name="open_event">
-            </div>
-        </div>
+        <x-event-input
+            message=""
+            label="Hora"
+            type="time"
+            name="time"
+        />
+
+        <x-event-input
+            message=""
+            label="Local"
+            name="local"
+        />
+
+        <x-event-input-checkbox
+            message="Por padrão seu evento será criado fechado ao público, mas se quizer torná-lo disponível a todos, basta selecionar a seguir."
+            label="Evento Aberto"
+            type="checkbox"
+            name="open_event"
+        >Evento Aberto: </x-event-input-checkbox>
 
         <div>
             <p>Se desejar, adicione uma descrição.</p>
             <label for="description">Descrição:</label>
-            <textarea name="description" cols="30" rows="10" value="{{ old('description') }}"></textarea>
+            <textarea name="description" id="description" class="padding-min rounded-min" cols="30" rows="10" value="{{ old('description') }}" placeholder="Descrição"></textarea>
         </div>
 
-        <div>
-            <p>Por fim, adicione uma foto para representar o seu evento.</p>
-            <label for="event_picture">Foto:</label>
-            <input type="file" name="event_picture" value="{{ old('event_picture') }}">
-        </div>
+        <x-event-input
+            message="Por fim, adicione uma foto para representar o seu evento."
+            label="Foto:"
+            type="file"
+            name="event_picture"
+        />
         
-        <button type="submit">Salvar</button>
-
+        <div class="flex-horizontal">
+            <button type="submit">Salvar</button>
+            <a href="{{ route('events.index') }}"><button type="button">Cancelar</button></a>
+        </div>
 
     </form>
 </x-layout.main>

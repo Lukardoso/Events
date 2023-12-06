@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Events' }}</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/popups.js" defer></script>
-    
+    <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/utils.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <script src="/js/popups.js" defer></script>    
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper bg-main-clr main-font padding-mid">
 
-        <header id="nav-bar">
+        <header id="nav-bar" class="flex-row space-between align-center margin-bottom-large ">
             <a href="{{ route('events.index') }}">
                 <h1 id="logo" style="color: var(--accent-clr); font-size: 1.5rem">EVENTS</h1>  
             </a>          
            
-            <ul id="menu">
+            <ul id="menu" class="flex-row gap-large list-style-none">
                 <a href="#"><li>Item A</li></a>
                 <a href="#"><li>Item B</li></a>
                 <a href="#"><li>Item C</li></a>
@@ -58,8 +59,8 @@
             
         </header>     
        
-        <main>           
-            <div id="content">
+        <main class="full-view gap-mid">           
+            <div class="flex-column gap-mid">
                 {{ $slot }}
             </div>
             <div id="ads">
@@ -67,7 +68,7 @@
             </div>
         </main>
 
-        <footer>
+        <footer class="grid-autofit padding-mid gap-mid">
             <div id="about" class="flex-textbox">
                 <h2>Sobre:</h2>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, esse!</p>
