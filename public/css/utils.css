@@ -21,6 +21,8 @@ a {
   
   --main-clr: #2e2b2b;
   --sec-clr: #ffff;
+
+  --error-clr: #dc2626;
 }
 
 
@@ -238,3 +240,14 @@ button, input[type="submit"] {
 .list-style-none {
   list-style: none;
 }
+
+
+/* Errors ----------------------------------------------------------------- */
+.error-message {
+  color: var(--error-clr);
+}
+
+[error] {
+  border: 0.1rem solid var(--error-clr);
+}
+

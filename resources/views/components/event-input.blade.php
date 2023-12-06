@@ -1,5 +1,5 @@
 @props([
-    'message', 'label', 'type' => 'text', 'name', 'required' => ''
+    'message', 'label', 'type' => 'text', 'name', 'required' => '',
 ])
 
 <div>
@@ -12,11 +12,21 @@
         placeholder="{{ $label }}"
         {{ $required }}
         value="{{ old($name) }}"
+
+        @if($errors->get($name))
+            error
+            onChange="removeError(this)"
+        @endif
+
         {{ $attributes->merge(['class' => 'padding-min']) }}
     />
-    @foreach($errors->get($name) as $error)
-        <li>
-            {{ $error }}
+        <li class="list-style-none font-min margin-min error-message">
+            {{ $errors->first($name) }}
         </li>
-    @endforeach
 </div>
+
+<script>
+    function removeError(element) {
+        element.removeAttribute("error");
+    }
+</script>

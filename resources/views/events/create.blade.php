@@ -52,6 +52,10 @@
             <p>Se desejar, adicione uma descrição.</p>
             <label for="description">Descrição:</label>
             <textarea name="description" id="description" class="padding-min rounded-min" cols="30" rows="10" value="{{ old('description') }}" placeholder="Descrição"></textarea>
+            
+            <li class="list-style-none font-min margin-min error-message">
+                {{ $errors->first('description') }}
+            </li>
         </div>
 
         <x-event-input
