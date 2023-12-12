@@ -1,0 +1,253 @@
+/* Resets & Standards ------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Roboto:wght@100;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-clr);
+}
+
+:root {
+  --main-bg-clr: #fff;
+  --sec-bg-clr: #f1f1f1;
+  
+  --accent-clr: tomato;
+  
+  --main-clr: #2e2b2b;
+  --sec-clr: #ffff;
+
+  --error-clr: #dc2626;
+}
+
+
+/* Fonts -------------------------------------------------------------- */
+.main-font {
+  font-family: 'Comfortaa', sans-serif;
+}
+
+
+/* Colors -------------------------------------------------------------- */
+.bg-main-clr {
+  background: var(--main-bg-clr);
+}
+.bg-sec-clr {
+  background: var(--sec-bg-clr);
+}
+
+.main-clr {
+  color: var(--main-clr);
+}
+.sec-clr {
+  color: var(--sec-clr);
+}
+
+
+/* Padding, Margin & Gap ---------------------------------------------- */
+.padding-min {
+  padding: 0.2rem;
+}
+.padding-mid {
+  padding: 0.5rem;
+}
+.padding-large {
+  padding: 1rem;
+}
+
+.margin-min {
+  margin: 0.5rem;
+}
+.margin-mid {
+  margin: 1rem;
+}
+.margin-large {
+  margin: 2rem;
+}
+
+.gap-min {
+  gap: 0.5rem;
+}
+.gap-mid {
+  gap: 1rem;
+}
+.gap-large {
+  gap: 2rem;
+}
+
+
+/* Separate Sections ------------------------------------------------------ */
+.margin-bottom-min {
+  margin-bottom: 1rem;
+}
+.margin-bottom-mid {
+  margin-bottom: 2.5rem;
+}
+.margin-bottom-large {
+  margin-bottom: 5rem;
+}
+
+
+/* Screen --------------------------------------------------------------- */
+.full-view {
+  min-height: 100vh;
+  width: 100%;
+}
+
+
+/* Images ---------------------------------------------------------------- */
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.img-min {
+  width: 150px;
+}
+.img-mid {
+  width: 300px;
+}
+.img-large {
+  width: 600px;
+}
+
+.aspect-ratio-16-9 {
+  aspect-ratio: 16/9;
+}
+
+
+/* Borders -----------------------------------------------------------------*/
+.no-border {
+  border: none;
+}
+
+.rounded-min {
+  border-radius: 0.2rem;
+}
+.rounded-mid {
+  border-radius: 0.5rem;
+}
+.rounded-large {
+  border-radius: 1rem;
+}
+
+
+/* Effects -----------------------------------------------------------------*/
+.simple-shadow {
+  box-shadow: 0.1rem 0.1rem 0.2rem rgb(0, 0, 0, 0.2);
+}
+.soft-shadow {
+  box-shadow: 0 0.2rem 0.2rem rgb(0, 0, 0, 0.1);
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+
+/* Buttons -----------------------------------------------------------------*/
+button, input[type="submit"] {
+  padding: 0.5rem 1.5rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.btn-slim {  
+  padding: 0.2rem 1rem;
+}
+.btn-fat {
+  padding: 1rem 2rem;
+}
+
+.btn-min {
+  width: 100px;
+}
+.btn-mid {
+  width: 150px;
+}
+.btn-large {
+  width: 200px;
+}
+.btn-fit {
+  width: fit-content;
+}
+.btn-100 {
+  width: 100%;
+}
+
+
+/* Display --------------------------------------------------------------- */
+.grid-autofit {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.align-start {
+  align-items: start;
+}
+.align-center {
+  align-items: center;
+}
+.align-end {
+  align-items: end;
+}
+
+
+/* Texts ---------------------------------------------------------------- */
+.font-min {
+  font-size: 0.7rem;
+}
+.font-mid {
+  font-size: 1.5rem;
+}
+.font-large {
+  font-size: 2rem;
+}
+
+.text-start {
+  text-align: start;
+}
+.text-center {
+  text-align: center;
+}
+.text-end {
+  text-align: end;
+}
+
+
+/* Lists ------------------------------------------------------------------ */
+.list-style-none {
+  list-style: none;
+}
+
+
+/* Errors ----------------------------------------------------------------- */
+.error-message {
+  color: var(--error-clr);
+}
+
+[error] {
+  border: 0.1rem solid var(--error-clr);
+}
+

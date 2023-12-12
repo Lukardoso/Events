@@ -3,9 +3,9 @@
         <link rel="stylesheet" href="/css/event-details.css">
     </header>
 
-    <h1 id="event-tittle">{{ $event->event_name }}</h1>
+    <h1 id="event-tittle" class="text-center margin-large">{{ $event->event_name }}</h1>
 
-    <div id="menu-bar">
+    <div id="menu-bar" class="flex-row space-evenly align-end padding-large soft-shadow">
         <a href="#">Editar Evento</a>
         <a href="#">Excluir Evento</a>
         <a href="#">Enviar Convite</a>
@@ -16,7 +16,7 @@
     <div id="event">
         <div>
             <div id="event-data">
-                <img src="/storage/{{ $event->event_picture }}"/>
+                <x-event-picture :eventPicture="$event->event_picture" />
                 
                 <p class="flex-container">
                     <span>Data: {{ $event->date }}</span>
@@ -29,7 +29,7 @@
                 </p>
                 <div id="side-bar">
                     <p>Total de Convidados: 99</p>
-                    <p>Presença confirmada: 57</p>      
+                    <p>Presença confirmada: 57</p>
                 </div>
             </div>
         </div>
@@ -44,12 +44,7 @@
                         <th>Email</th>
                         <th>Confirmado</th>
                     </tr>
-                    <tr>
-                        <td>Lucas Cardoso Lannes</td>
-                        <td>33999782780</td>
-                        <td>lucas@email.com</td>
-                        <td>sim</td>
-                    </tr>
+                    <x-invited />
                 </table>
             </div>
         </div>

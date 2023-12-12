@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Validator;
 
 class EventRequest extends FormRequest
 {
@@ -24,14 +23,28 @@ class EventRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'event_name' => 'string|required',
-            'type' => 'string|required',
-            'date' => 'date|required|after_or_equal:today',
-            'time' => 'date_format:H:i|required',
-            'local' => 'string|required',
+            'event_name' => 'required|string',
+            'type' => 'required|string',
+            'date' => 'required|date|after_or_equal:today',
+            'time' => 'required|date_format:H:i',
+            'local' => 'required|string',
             'open_event' => 'in:on,off',
-            'description' => 'string|max:255',
-            'event_picture' => 'nullable|image|mimes:jpg,png,jpeg|max:4000,'
+            'description' => 'max:255|string|nullable',
+            'event_picture' => 'max:4096|mimes:jpg,jpeg,png|image|nullable',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'event_name.required' => 'Ei, o seu evento precisa de um nome!',
+            'type.required' => 'Você esqueceu do tipo de seu evento.',
+            'date.required' => 'Tudo tem uma data para acontecer...',
+            'time.required' => 'Horas?',
+            'local.required' => 'Todo evento tem que acontecer em algum lugar.',
+            'description.max' => 'Eita, resume isso ai um pouco.',
+            'event_picture.max' => 'Só conseguimos guardar fotos até 4mb.',
+            'event_picture.mimes' => 'Sua foto precisa ser em um dos formatos: jpg, jpeg, png.',
         ];
     }
 

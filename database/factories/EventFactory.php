@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use Exception;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
@@ -31,10 +32,12 @@ class EventFactory extends Factory
     }
 
     private function getRandomUser()
-    {
-        User::factory()->create();
-
+    {        
         $userLenght = User::all()->count();
+
+        if($userLenght === 0) {
+            throw new Exception('No users found.');
+        }
 
         $randomUser = random_int(1, $userLenght);
 
