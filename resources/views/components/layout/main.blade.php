@@ -63,9 +63,6 @@
             <div class="flex-column gap-mid">
                 {{ $slot }}
             </div>
-            <div id="ads">
-                <p>ADS</p>
-            </div>
         </main>
 
         <footer class="grid-autofit padding-mid gap-mid">
