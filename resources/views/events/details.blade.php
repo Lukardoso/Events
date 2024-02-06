@@ -1,24 +1,24 @@
-<x-layout.main>
+<x-app-layout>
     <header>
-        <link rel="stylesheet" href="/css/event-details.css">
+<!--         <link rel="stylesheet" href="/css/event-details.css"> -->
     </header>
 
-    <h1 id="event-tittle" class="text-center margin-large">{{ $event->event_name }}</h1>
+    <h1 id="event-tittle" class="text-center text-4xl my-8">{{ $event->event_name }}</h1>
 
-    <div id="menu-bar" class="flex-row space-evenly align-end padding-large soft-shadow">
-        <a href="#">Editar Evento</a>
-        <a href="#">Excluir Evento</a>
-        <a href="#">Enviar Convite</a>
-        <a href="#">Desconvidar</a>
-        <a href="#">Enviar Notificação</a>
+    <div id="menu-bar" class="flex flex-wrap justify-evenly border-b shadow">
+        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Editar Evento</a>
+        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Excluir Evento</a>
+        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Convite</a>
+        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Desconvidar</a>
+        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Notificação</a>
     </div>
 
-    <div id="event">
+    <div id="event" class="grid grid-cols-[300px_1fr] gap-2 pt-6">
         <div>
-            <div id="event-data">
+            <div id="event-data" class="grid gap-4">
                 <x-event-picture :eventPicture="$event->event_picture" />
                 
-                <p class="flex-container">
+                <p class="flex justify-between">
                     <span>Data: {{ $event->date }}</span>
                     <span>Horário: {{ $event->time }}</span>
                 </p>
@@ -35,18 +35,18 @@
         </div>
         
         <div>
-            <div id="participants">
+            <div id="participants" class="grid grid-col text-center gap-8">
                 <h2>Convidados</h2>      
                 <table>
-                    <tr class="non-interactive">
+                    <tr class="[&_>*]:p-2">
                         <th>Nome</th>
                         <th>Telefone</th>
                         <th>Email</th>
                         <th>Confirmado</th>
                     </tr>
-                    <x-invited />
+                    <x-invited class="border-b" />
                 </table>
             </div>
         </div>
     </div>
-</x-layout.main>
+</x-app-layout>

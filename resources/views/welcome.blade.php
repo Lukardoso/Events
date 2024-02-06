@@ -1,13 +1,13 @@
 <x-layout.main>
-    <div style="place-self: center;">
+    <div class="flex flex-col gap-4 place-content-center place-items-center">
         <h1>Welcome!</h1>
         <p>This is a temporary page.</p>
-        <div style="flex-direction: row;">
+        <div class="mt-14">
             <a href="{{ route('login') }}">
-                <button>Login</button>
+                <button class="w-28 bg-slate-800 text-white p-2 rounded">Login</button>
             </a>
             <a href="{{ route('register') }}">
-                <button>Register</button>
+                <button class="w-28 bg-slate-800 text-white p-2 rounded">Register</button>
             </a>
         </div>
     </div>

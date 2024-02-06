@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $title ?? 'Events' }}</title>
-    <link rel="stylesheet" href="/css/layout.css">
+<!--     <link rel="stylesheet" href="/css/layout.css">
     <link rel="stylesheet" href="/css/utils.css">
-    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/profile.css"> -->
     <script src="/js/popups.js" defer></script>    
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
 <body>
-    <div class="wrapper bg-main-clr main-font padding-mid">
+    <div class="">
 
-        <header id="nav-bar" class="flex-row space-between align-center margin-bottom-large ">
+        <header id="nav-bar" class="flex flex-wrap justify-between border">
             <a href="{{ route('events.index') }}">
                 <h1 id="logo" style="color: var(--accent-clr); font-size: 1.5rem">EVENTS</h1>  
             </a>          
            
-            <ul id="menu" class="flex-row gap-large list-style-none">
+            <ul id="menu" class="flex flex-wrap gap-4 justify-center">
                 <a href="#"><li>Item A</li></a>
                 <a href="#"><li>Item B</li></a>
                 <a href="#"><li>Item C</li></a>

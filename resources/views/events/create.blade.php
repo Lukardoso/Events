@@ -1,6 +1,6 @@
 <!-- TODO: Refatorar todos os inputs em components com error messages -->
 
-<x-layout.main>    
+<x-app-layout>    
     <header>
         <link rel="stylesheet" href="/css/new-event.css">
     </header>
@@ -71,4 +71,4 @@
         </div>
 
     </form>
-</x-layout.main>
+</x-app-layout>

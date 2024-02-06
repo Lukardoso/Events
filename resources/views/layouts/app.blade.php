@@ -28,7 +28,7 @@
             @endif -->
 
             <!-- Page Content -->
-            <main>
+            <main class="p-8">
                 {{ $slot }}
             </main>
         </div>
