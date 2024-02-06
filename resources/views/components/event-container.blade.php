@@ -2,7 +2,7 @@
     <link rel="stylesheet" href="/css/event-container.css">
 </head>
 
-<div class="event-container" onclick="openEvent('{{ $event->id }}')">
+<div tabindex="0" class="event-container" onclick="openEvent('{{ $event->id }}')">
     <x-event-picture :eventPicture="$event->event_picture" />
 
     <div id="event-description">
