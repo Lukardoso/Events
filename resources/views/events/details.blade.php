@@ -1,11 +1,7 @@
 <x-app-layout>
-    <header>
-<!--         <link rel="stylesheet" href="/css/event-details.css"> -->
-    </header>
-
     <h1 id="event-tittle" class="text-center text-4xl my-8">{{ $event->event_name }}</h1>
 
-    <div id="menu-bar" class="flex flex-wrap justify-evenly border-b shadow">
+    <div id="menu-bar" class="flex flex-wrap justify-evenly border-b shadow-sm">
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Editar Evento</a>
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Excluir Evento</a>
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Convite</a>
@@ -16,7 +12,7 @@
     <div id="event" class="grid grid-cols-[300px_1fr] gap-2 pt-6">
         <div>
             <div id="event-data" class="grid gap-4">
-                <x-event-picture :eventPicture="$event->event_picture" />
+                <x-event-picture class="w-full" :eventPicture="$event->event_picture" />
                 
                 <p class="flex justify-between">
                     <span>Data: {{ $event->date }}</span>

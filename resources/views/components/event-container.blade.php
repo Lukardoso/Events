@@ -1,11 +1,7 @@
-<head>
-    <link rel="stylesheet" href="/css/event-container.css">
-</head>
-
-<div tabindex="0" class="event-container" onclick="openEvent('{{ $event->id }}')">
+    <div tabindex="0" class="sm:w-2/4 flex flex-wrap gap-4 align-middle self-center bg-color-30 p-1 border rounded-lg shadow-md cursor-pointer hover:opacity-70" onclick="openEvent('{{ $event->id }}')">
     <x-event-picture :eventPicture="$event->event_picture" />
 
-    <div id="event-description">
+    <div id="event-description" class="flex flex-col gap-4">
         <h2>{{ $event->event_name }}</h2>
         <div>
             <p>Data: {{ $event->date }}</p>
