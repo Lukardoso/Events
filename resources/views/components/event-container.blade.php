@@ -1,5 +1,5 @@
     <div tabindex="0" class="sm:w-2/4 flex flex-wrap gap-4 align-middle self-center bg-color-30 p-1 border rounded-lg shadow-md cursor-pointer hover:opacity-70" onclick="openEvent('{{ $event->id }}')">
-    <x-event-picture :eventPicture="$event->event_picture" />
+    <x-event-picture :eventPicture="$event->event_picture" class="w-full sm:w-fit" />
 
     <div id="event-description" class="flex flex-col gap-4">
         <h2>{{ $event->event_name }}</h2>

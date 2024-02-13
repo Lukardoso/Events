@@ -9,7 +9,7 @@
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Notificação</a>
     </div>
 
-    <div id="event" class="grid grid-cols-[300px_1fr] gap-2 pt-6">
+    <div id="event" class="grid grid-cols-1 sm:grid-cols-[300px_1fr] gap-2 pt-6">
         <div>
             <div id="event-data" class="grid gap-4">
                 <x-event-picture class="w-full" :eventPicture="$event->event_picture" />
@@ -31,17 +31,31 @@
         </div>
         
         <div>
-            <div id="participants" class="grid grid-col text-center gap-8">
-                <h2>Convidados</h2>      
-                <table>
-                    <tr class="[&_>*]:p-2">
-                        <th>Nome</th>
-                        <th>Telefone</th>
-                        <th>Email</th>
-                        <th>Confirmado</th>
-                    </tr>
-                    <x-invited class="border-b" />
+            <div id="participants" class="mt-8 overflow-x-auto grid grid-col text-center gap-8">
+                <h2 class="uppercase font-bold">Convidados</h2>      
+
+                <table class="table-auto min-w-max">
+					<thead>
+						<tr class="[&>*]:py-4">
+							<th>Nome</th>
+							<th>Telefone</th>
+							<th>Email</th>
+							<th>Confirmado</th>
+						</tr>
+					</thead>
+					<tbody>
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+						<x-invited class="border-b" />
+					</tbody>
                 </table>
+
+				</div>
             </div>
         </div>
     </div>
