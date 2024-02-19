@@ -4,7 +4,7 @@
     <div id="menu-bar" class="flex flex-wrap justify-evenly border-b shadow-sm">
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Editar Evento</a>
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Excluir Evento</a>
-        <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Convite</a>
+        <a href="{{ $event->id }}/convidados" class="border-b-4 hover:border-red-600 border-transparent">Enviar Convite</a>
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Desconvidar</a>
         <a href="#" class="border-b-4 hover:border-red-600 border-transparent">Enviar Notificação</a>
     </div>

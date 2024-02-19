@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\InvitedController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,12 @@ Route::get('/events/{id}', [EventController::class, 'eventDetails'])
     ->name('eventDetails')
     ->middleware(['auth', 'verified']);
 
+Route::get('/events/{id}/convidados', [InvitedController::class, 'index'])
+    ->name('invited')
+    ->middleware(['auth', 'verified']);
+
+
+// Auth middleware
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
