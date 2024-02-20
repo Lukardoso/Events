@@ -1,11 +1,7 @@
-<head>
-    <link rel="stylesheet" href="/css/event-container.css">
-</head>
+<a href="/events/{{ $event->id }}" class="sm:w-2/4 flex flex-wrap gap-4 align-middle self-center bg-color-30 p-1 border rounded-lg shadow-md cursor-pointer hover:opacity-70">
+    <x-event-picture :eventPicture="$event->event_picture" class="w-full sm:w-fit" />
 
-<div tabindex="0" class="event-container" onclick="openEvent('{{ $event->id }}')">
-    <x-event-picture :eventPicture="$event->event_picture" />
-
-    <div id="event-description">
+    <div id="event-description" class="flex flex-col gap-4">
         <h2>{{ $event->event_name }}</h2>
         <div>
             <p>Data: {{ $event->date }}</p>
@@ -17,10 +13,4 @@
             <p>Presença Confirmada: xx</p>
         </div>
     </div>
-</div>
-
-<script>
-    function openEvent(id) {
-        window.open(`/events/${id}`, '_self');
-    }
-</script>
+</a>

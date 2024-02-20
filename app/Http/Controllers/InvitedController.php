@@ -13,7 +13,7 @@ class InvitedController extends Controller
      */
     public function index()
     {
-        //
+        return view('events.invited.index');
     }
 
     /**

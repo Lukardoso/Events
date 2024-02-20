@@ -14,9 +14,6 @@
                     <x-nav-link :href="route('events.index')">
                         Eventos
                     </x-nav-link>
-                    <x-nav-link :href="route('events.index')">
-                        Item 2 
-                    </x-nav-link>
                 </div>
             </div>
 

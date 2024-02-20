@@ -17,7 +17,7 @@ class EventController extends Controller
      */
     public function index(): View
     {
-        $events = Event::where('user_id', Auth::user()->id)->get();
+        $events = Event::where('user_id', Auth::user()->id)->latest()->get();
 
         return view('events.index', [
             'events' => $events,

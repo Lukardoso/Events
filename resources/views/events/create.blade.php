@@ -1,12 +1,6 @@
-<!-- TODO: Refatorar todos os inputs em components com error messages -->
-
 <x-app-layout>    
-    <header>
-        <link rel="stylesheet" href="/css/new-event.css">
-    </header>
-
     <form action="{{ route('events.store') }}" method="post" id="new-event-form" enctype="multipart/form-data"
-        class="flex-column gap-mid">
+        class="flex flex-col gap-8 max-w-2xl sm:ml-52 [&>*]:border-b [&>*]:pb-3">
         @csrf
 
         <x-event-input
@@ -49,11 +43,11 @@
         >Evento Aberto: </x-event-input-checkbox>
 
         <div>
-            <p>Se desejar, adicione uma descrição.</p>
-            <label for="description">Descrição:</label>
-            <textarea name="description" id="description" class="padding-min rounded-min" cols="30" rows="10" value="{{ old('description') }}" placeholder="Descrição"></textarea>
+            <p class="uppercase">Se desejar, adicione uma descrição.</p>
+            <label class="hidden" for="description">Descrição:</label>
+            <textarea name="description" id="description" class="rounded w-full" cols="30" rows="10" value="{{ old('description') }}" placeholder="Descrição"></textarea>
             
-            <li class="list-style-none font-min margin-min error-message">
+            <li class="list-none text-red-700">
                 {{ $errors->first('description') }}
             </li>
         </div>
@@ -65,9 +59,9 @@
             name="event_picture"
         />
         
-        <div class="flex-horizontal">
-            <button type="submit">Salvar</button>
-            <a href="{{ route('events.index') }}"><button type="button">Cancelar</button></a>
+        <div class="flex gap-2">
+            <x-primary-button type="submit">Salvar</x-primary-button>
+            <a href="{{ route('events.index') }}"><x-primary-button type="button">Cancelar</x-primary-button></a>
         </div>
 
     </form>

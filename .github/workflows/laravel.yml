@@ -32,6 +32,8 @@ jobs:
       run: |
         mkdir -p database
         touch database/database.sqlite
+    - name: link storage
+      run: php artisan storage:link
     - name: Execute Feature tests via PHPUnit
       env:
         DB_CONNECTION: sqlite

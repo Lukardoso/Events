@@ -1,14 +1,14 @@
-<x-layout.main>
-    <div class="flex flex-col gap-4 place-content-center place-items-center">
+<x-guest-layout>
+    <div class="flex flex-col place-items-center gap-4">
         <h1>Welcome!</h1>
         <p>This is a temporary page.</p>
-        <div class="mt-14">
+        <div class="">
             <a href="{{ route('login') }}">
-                <button class="w-28 bg-slate-800 text-white p-2 rounded">Login</button>
+                <x-primary-button>Login</x-primary-button>
             </a>
             <a href="{{ route('register') }}">
-                <button class="w-28 bg-slate-800 text-white p-2 rounded">Register</button>
+                <x-primary-button>Register</x-primary-button>
             </a>
         </div>
     </div>
-</x-layout.main>
+</x-guest-layout>

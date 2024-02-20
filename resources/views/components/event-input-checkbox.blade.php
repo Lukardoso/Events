@@ -3,10 +3,10 @@
 ])
 
 <div>
-    <p>{{ $message }}</p>
-    <div class="checkbox-container">
+    <p class="uppercase">{{ $message }}</p>
+    <div class="flex flex-wrap place-items-center gap-2 mt-3">
         {{ $slot }}
-        <label for="{{ $name }}">{{ $label }}</label>
+        <label class="hidden" for="{{ $name }}">{{ $label }}</label>
         <input  
             id="{{ $name }}"          
             type="{{ $type }}"

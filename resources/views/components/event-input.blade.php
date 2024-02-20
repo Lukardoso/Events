@@ -3,8 +3,8 @@
 ])
 
 <div>
-    <p>{{ $message }}</p>
-    <label for="{{ $name }}">{{ $label }}</label>
+    <p class="uppercase">{{ $message }}</p>
+    <label for="{{ $name }}" class="hidden">{{ $label }}</label>
     <input
         id="{{ $name }}" 
         type="{{ $type }}" 
@@ -18,9 +18,9 @@
             onChange="removeError(this)"
         @endif
 
-        {{ $attributes->merge(['class' => 'padding-min']) }}
+        {{ $attributes->merge(['class' => 'rounded w-full sm:max-w-xs']) }}
     />
-        <li class="list-style-none font-min margin-min error-message">
+        <li class="list-none text-red-700">
             {{ $errors->first($name) }}
         </li>
 </div>
